@@ -9,7 +9,9 @@ import org.apache.commons.lang3.Validate;
 
 /**
  * Defines a processor for the "Plateau" command
- *
+ * Header: "Plateau"
+ * Arguments: "10 20" (width height)
+ * 
  * @author Marcelo Burgos Morgade Cortizo
  */
 public class PlateauEventListener implements MissionEventListener {
