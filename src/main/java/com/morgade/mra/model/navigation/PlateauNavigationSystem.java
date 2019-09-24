@@ -1,8 +1,6 @@
 package com.morgade.mra.model.navigation;
 
-import com.morgade.mra.model.Direction2D;
 import com.morgade.mra.model.Plateau;
-import com.morgade.mra.model.Position2D;
 import org.apache.commons.lang3.Validate;
 
 /**

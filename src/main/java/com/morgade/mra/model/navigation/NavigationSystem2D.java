@@ -1,8 +1,5 @@
 package com.morgade.mra.model.navigation;
 
-import com.morgade.mra.model.Direction2D;
-import com.morgade.mra.model.Position2D;
-
 /**
  * Define a contract interface for a simple 2D navigation system
  * 

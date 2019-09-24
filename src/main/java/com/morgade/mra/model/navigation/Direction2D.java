@@ -1,4 +1,4 @@
-package com.morgade.mra.model;
+package com.morgade.mra.model.navigation;
 
 import static java.lang.String.format;
 import java.util.Arrays;

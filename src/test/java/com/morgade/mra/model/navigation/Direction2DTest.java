@@ -1,5 +1,6 @@
-package com.morgade.mra.model;
+package com.morgade.mra.model.navigation;
 
+import com.morgade.mra.model.navigation.Direction2D;
 import static org.junit.Assert.assertSame;
 import org.junit.Test;
 

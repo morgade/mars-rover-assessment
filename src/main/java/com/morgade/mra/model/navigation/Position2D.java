@@ -1,4 +1,4 @@
-package com.morgade.mra.model;
+package com.morgade.mra.model.navigation;
 
 /**
  * Models a immutable value object representing a position defined in a
