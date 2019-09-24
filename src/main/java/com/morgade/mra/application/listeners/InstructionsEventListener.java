@@ -3,6 +3,7 @@ package com.morgade.mra.application.listeners;
 import com.morgade.mra.application.MissionEvent;
 import com.morgade.mra.application.MissionEventListener;
 import com.morgade.mra.model.MissionControl;
+import com.morgade.mra.model.Plateau;
 import com.morgade.mra.model.navigation.Direction2D;
 import com.morgade.mra.model.navigation.Position2D;
 import static java.lang.String.format;
