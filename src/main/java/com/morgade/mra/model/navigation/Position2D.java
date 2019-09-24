@@ -1,5 +1,7 @@
 package com.morgade.mra.model.navigation;
 
+import static java.lang.String.format;
+
 /**
  * Models a immutable value object representing a position defined in a
  * boundless 2D space
@@ -102,8 +104,6 @@ public class Position2D {
 
     /**
      * {@inheritDoc }
-     * @param obj
-     * @return 
      */
     @Override
     public boolean equals(Object obj) {
@@ -114,5 +114,15 @@ public class Position2D {
             return false;
         }
     }
+
+    /**
+     * {@inheritDoc }
+     */
+    @Override
+    public String toString() {
+        return format("Position2D(%d,%d)", this.x, this.y);
+    }
+    
+    
     
 }
