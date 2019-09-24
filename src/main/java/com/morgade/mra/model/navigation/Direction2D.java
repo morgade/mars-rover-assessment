@@ -4,7 +4,7 @@ import static java.lang.String.format;
 import java.util.Arrays;
 
 /**
- * Models a simple sD four directions enumeration in a clockwise order
+ * Models a simple 2D four directions enumeration in a clockwise order
  * @author Marcelo Burgos Morgade Cortizo
  */
 public enum Direction2D {
