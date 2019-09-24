@@ -91,5 +91,28 @@ public class Position2D {
                 && this.y >= minY
                 && this.y <= maxY;
     }
+
+    /**
+     * {@inheritDoc }
+     */
+    @Override
+    public int hashCode() {
+        return 31 * x + y;
+    }
+
+    /**
+     * {@inheritDoc }
+     * @param obj
+     * @return 
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (obj != null && obj.getClass() == this.getClass()) {
+            final Position2D other = (Position2D) obj;
+            return this.x == other.x && this.y == other.y;
+        } else {
+            return false;
+        }
+    }
     
 }

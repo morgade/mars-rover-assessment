@@ -1,7 +1,5 @@
 package com.morgade.mra.model.navigation;
 
-import com.morgade.mra.model.navigation.Direction2D;
-import com.morgade.mra.model.navigation.Position2D;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
@@ -47,5 +45,29 @@ public class Position2DTest {
         assertTrue(origin.isInsideBoundary(-5, -2, 3, 5) );
         assertTrue(!origin.isInsideBoundary(2, 10) );
         assertTrue(!origin.isInsideBoundary(4, 4, 10, 10) );
+    }
+    
+    @Test
+    public void testEquals() {
+        Position2D p1 = new Position2D(2, 3);
+        Position2D p2 = new Position2D(2, 3);
+        Position2D p3 = new Position2D(3, 3);
+        
+        assertTrue(p1.equals(p1));
+        assertTrue(p1.equals(p2));
+        assertTrue(p2.equals(p1));
+        assertTrue(!p1.equals(p3));
+        assertTrue(!p3.equals(p2));
+    }
+    
+    
+    @Test
+    public void testHashCode() {
+        Position2D p1 = new Position2D(2, 3);
+        Position2D p2 = new Position2D(2, 3);
+        Position2D p3 = new Position2D(3, 2);
+        
+        assertTrue(p1.hashCode() == p2.hashCode());
+        assertTrue(p1.hashCode() != p3.hashCode());
     }
 }
