@@ -28,7 +28,7 @@ public class PlateauEventListener implements MissionEventListener {
         // Checks argument count
         String[] arguments = event.getArgumentAsArray();
         Validate.isTrue(EXPECTED_ARGUMENT_COUNT == arguments.length, 
-            format("Plateau event should contain %d argument", EXPECTED_ARGUMENT_COUNT)
+            format("Plateau event should contain %d arguments", EXPECTED_ARGUMENT_COUNT)
         );
         
         Plateau plateau = new Plateau(

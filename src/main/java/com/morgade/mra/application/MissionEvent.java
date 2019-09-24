@@ -28,6 +28,10 @@ public class MissionEvent implements Serializable {
         return argument;
     }
     
+    public String[] getHeaderAsArray() {
+        return header.split("\\s+");
+    }
+    
     public String[] getArgumentAsArray() {
         return argument.split("\\s+");
     }
