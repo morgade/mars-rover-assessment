@@ -40,7 +40,8 @@ public class MissionControl {
      */
     public MissionControl(Plateau plateau) {
         this();
-        this.resetMission(plateau);
+        Validate.notNull(this.plateau == null, "Plateau argument must be defined");
+        this.plateau = plateau;
     }
        
     
@@ -48,7 +49,7 @@ public class MissionControl {
      * Reset mission data, specifying a new managed plateau
      * @param plateau 
      */
-    public final void resetMission(Plateau plateau) {
+    public void resetMission(Plateau plateau) {
         Validate.notNull(this.plateau == null, "Plateau argument must be defined");
         this.plateau = plateau;
         this.rovers.clear();

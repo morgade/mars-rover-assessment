@@ -12,7 +12,7 @@ public class PlateauNavigationSystem implements NavigationSystem2D {
     /**
      * Plateau being navigated
      */
-    private Plateau plateau;
+    private final Plateau plateau;
     /**
      * Current position tracked by the navigation system
      */
