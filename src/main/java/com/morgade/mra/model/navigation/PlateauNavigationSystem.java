@@ -33,7 +33,7 @@ public class PlateauNavigationSystem implements NavigationSystem2D {
         Validate.notNull(plateau, "plateau parameter must be defined");
         Validate.notNull(startPosition, "startPosition parameter must be defined");
         Validate.notNull(startDirection, "startDirection parameter must be defined");
-        Validate.isTrue( startPosition.isInsideBoundary(plateau.getWidth(), plateau.getHeight()),
+        Validate.isTrue( startPosition.isInsideBoundary(plateau.getMaxX(), plateau.getMaxY()),
                 format("Navigation startPosition invalid: %s", startPosition));
         
         this.plateau = plateau;
@@ -64,7 +64,7 @@ public class PlateauNavigationSystem implements NavigationSystem2D {
     public void move() {
         Position2D newPosition = this.currentPosition.move(this.currentDirection);
 
-        if (!newPosition.isInsideBoundary(this.plateau.getWidth(), this.plateau.getHeight())) {
+        if (!newPosition.isInsideBoundary(this.plateau.getMaxX(), this.plateau.getMaxY())) {
             throw new NavigationException(NavigationException.CODE_OUT_OF_BOUNDS, "Out of plateau bounds");
         }
         

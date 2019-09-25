@@ -11,8 +11,8 @@ public class PlateauTest {
     @Test
     public void testConstructorValid() {
         Plateau plateau = new Plateau(20, 30);
-        assertEquals(plateau.getWidth(), 20);
-        assertEquals(plateau.getHeight(), 30);
+        assertEquals(plateau.getMaxX(), 20);
+        assertEquals(plateau.getMaxY(), 30);
     }
     
     @Test(expected = IllegalArgumentException.class)

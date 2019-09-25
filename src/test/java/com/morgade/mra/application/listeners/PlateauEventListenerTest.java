@@ -33,8 +33,8 @@ public class PlateauEventListenerTest {
         
         ArgumentCaptor<Plateau> plateauCaptor = ArgumentCaptor.forClass(Plateau.class);
         verify(missionControl).resetMission(plateauCaptor.capture());
-        assertEquals(10, plateauCaptor.getValue().getWidth());
-        assertEquals(20, plateauCaptor.getValue().getHeight());
+        assertEquals(10, plateauCaptor.getValue().getMaxX());
+        assertEquals(20, plateauCaptor.getValue().getMaxY());
     }
     
     @Test
