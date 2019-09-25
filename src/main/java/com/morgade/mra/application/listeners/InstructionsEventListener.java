@@ -25,12 +25,12 @@ public class InstructionsEventListener implements MissionEventListener {
     private static final int ARGUMENT_INDEX_INSTRUCTIONS = 0;
 
     @Override
-    public void handle(MissionEvent event, MissionControl missionControl) {
+    public boolean handle(MissionEvent event, MissionControl missionControl) {
         // Check expected header
         String headers[] = event.getHeaderAsArray();
         if (EXPECTED_HEADER_COUNT != headers.length 
                 || !headers[EXPECTED_HEADER_INDEX].equals(EXPECTED_HEADER_VALUE)) {
-            return;
+            return false;
         }
         
         // Check argument count
@@ -49,6 +49,8 @@ public class InstructionsEventListener implements MissionEventListener {
                     .map( instruction -> NavigationInstruction.fromId(instruction) )
                     .toArray( l -> new NavigationInstruction[l] )
         );
+        
+        return true;
     }
 
 }

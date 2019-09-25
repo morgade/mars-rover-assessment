@@ -1,0 +1,3 @@
+Rover1:6 6 W
+Rover2:0 3 N
+Rover3:0 0 S

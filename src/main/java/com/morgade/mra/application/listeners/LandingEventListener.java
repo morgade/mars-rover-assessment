@@ -26,12 +26,12 @@ public class LandingEventListener implements MissionEventListener {
     private static final int ARGUMENT_INDEX_DIRECTION = 2;
 
     @Override
-    public void handle(MissionEvent event, MissionControl missionControl) {
+    public boolean handle(MissionEvent event, MissionControl missionControl) {
         // Check expected header
         String headers[] = event.getHeaderAsArray();
         if (EXPECTED_HEADER_COUNT != headers.length 
                 || !headers[EXPECTED_HEADER_INDEX].equals(EXPECTED_HEADER_VALUE)) {
-            return;
+            return false;
         }
         
         // Check argument count
@@ -48,6 +48,8 @@ public class LandingEventListener implements MissionEventListener {
         Direction2D direction = Direction2D.findByShortName(arguments[ARGUMENT_INDEX_DIRECTION]);
         
         missionControl.registerLanding(roverId, position, direction);
+        
+        return true;
     }
 
 }

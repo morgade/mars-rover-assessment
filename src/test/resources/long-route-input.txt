@@ -1,0 +1,3 @@
+Plateau:10 10
+Rover1 Landing:1 1 N
+Rover1 Instructions:MRMMMMRMLMMMLMMRRMMMRRRMM

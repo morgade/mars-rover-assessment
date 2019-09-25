@@ -21,10 +21,10 @@ public class PlateauEventListener implements MissionEventListener {
     private static final int ARGUMENT_INDEX_HEIGHT = 1;
 
     @Override
-    public void handle(MissionEvent event, MissionControl missionControl) {
+    public boolean handle(MissionEvent event, MissionControl missionControl) {
         // Checks expected header
         if (!event.getHeader().equals(EXPECTED_HEADER_VALUE)) {
-            return;
+            return false;
         }
         
         // Checks argument count
@@ -39,6 +39,7 @@ public class PlateauEventListener implements MissionEventListener {
         );
         
         missionControl.resetMission(plateau);
+        return true;
     }
 
 }

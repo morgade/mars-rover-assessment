@@ -63,7 +63,7 @@ public class PlateauNavigationSystem implements NavigationSystem2D {
         Position2D newPosition = this.currentPosition.move(this.currentDirection);
 
         if (!newPosition.isInsideBoundary(this.plateau.getWidth(), this.plateau.getHeight())) {
-            throw new NavigationException(NavigationException.CODE_OUT_OF_BOUNDS, "Out of the plateau bounds");
+            throw new NavigationException(NavigationException.CODE_OUT_OF_BOUNDS, "Out of plateau bounds");
         }
         
         this.currentPosition = newPosition;

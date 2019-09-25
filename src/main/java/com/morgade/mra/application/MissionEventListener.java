@@ -13,6 +13,7 @@ public interface MissionEventListener {
      * 
      * @param event event to be handled
      * @param missionControl missionControl associated to the published event
+     * @return true if this listener took action for this event
      */
-    void handle(MissionEvent event, MissionControl missionControl);
+    boolean handle(MissionEvent event, MissionControl missionControl);
 }

@@ -55,4 +55,13 @@ public enum Direction2D {
         int leftIndex = (values().length + ordinal() - 1) % values().length;
         return values()[leftIndex];
     }
+
+    /**
+     * @return direction short name
+     */
+    public String getShortName() {
+        return shortName;
+    }
+    
+    
 }

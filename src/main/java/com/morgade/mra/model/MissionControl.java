@@ -5,6 +5,7 @@ import com.morgade.mra.model.navigation.NavigationSystem2D;
 import com.morgade.mra.model.navigation.PlateauNavigationSystem;
 import com.morgade.mra.model.navigation.Position2D;
 import com.morgade.mra.model.navigation.Direction2D;
+import com.morgade.mra.model.navigation.NavigationException;
 import static java.lang.String.format;
 import java.util.Arrays;
 import java.util.Collection;
@@ -26,12 +27,18 @@ public class MissionControl {
      * rovers navigating over the plateau
      */
     private final Map<String, Rover> rovers;
+    /**
+     * Defines behavior when handling NavigationExceptions (abort instruction sets
+     * on NavigationException or simply skip moves that causes exceptions)
+     */
+    private boolean abortOnNavigationException;
 
     /**
      * Default constructor
      */
     public MissionControl() {
-        rovers = new HashMap<>();
+        this.rovers = new HashMap<>();
+        this.abortOnNavigationException = false;
     }
 
     /**
@@ -79,8 +86,17 @@ public class MissionControl {
         Rover rover = findRover(roverId);
         NavigationSystem2D navigationSystem = rover.getNavigationSystem();
         
-        Arrays.stream(instructionSet).forEach( i -> {
-            switch (i) {
+        Arrays.stream(instructionSet).forEach(i -> processInstruction(navigationSystem, i));
+    }
+    
+    /**
+     * Delegates a navigation instruction to a navigation system
+     * @param navigationSystem
+     * @param navigationInstruction 
+     */
+    protected void processInstruction(NavigationSystem2D navigationSystem, NavigationInstruction navigationInstruction) {
+        try {
+            switch (navigationInstruction) {
                 case MOVE:
                     navigationSystem.move();
                     break;
@@ -91,10 +107,23 @@ public class MissionControl {
                     navigationSystem.turnRight();
                     break;
             }
-        });
-        
+        } catch (NavigationException ex) {
+            if (this.abortOnNavigationException) {
+                throw ex;
+            } else {
+                // TODO: Define a navigation exception logging system
+            }
+        }
     }
 
+    /**
+     * Setter for abortOnNavigationException
+     * @param abortOnNavigationException 
+     */
+    public void setAbortOnNavigationException(boolean abortOnNavigationException) {
+        this.abortOnNavigationException = abortOnNavigationException;
+    }
+    
     /**
      * @return the registered plateau
      */
