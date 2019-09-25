@@ -14,7 +14,7 @@ public class MissionEvent implements Serializable {
     private final String argument;
 
     public MissionEvent(String header, String argument) {
-        Validate.notBlank(header);
+        Validate.notBlank(header, "Mission event header must be defined");
         Validate.notNull(argument, "Mission event argument must be defined");
         this.header = header;
         this.argument = argument;

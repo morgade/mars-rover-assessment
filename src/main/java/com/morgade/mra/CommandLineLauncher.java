@@ -24,7 +24,14 @@ public class CommandLineLauncher {
      */
     public static void main(String[] args) throws FileNotFoundException {
         CommandLineLauncher commandLineLauncher = new CommandLineLauncher();
-        commandLineLauncher.launch(args, System.out);
+        try {
+            commandLineLauncher.launch(args, System.out);
+            System.exit(0);
+        } catch (NavigationException | IllegalArgumentException | FileNotFoundException ex) {
+            // Handle gracefully expected application exceptions
+            System.err.println(ex.getMessage());
+            System.exit(1);
+        }
     }
     
     /**
@@ -38,27 +45,22 @@ public class CommandLineLauncher {
         boolean useEmpyLineMarker = false;
         
         if (args.length == 0) {
-            System.err.println("Reading command from default input. Type an empty line to end the program.");
+            System.err.println("Reading command from default input. Enter an empty line to end the program.");
             useEmpyLineMarker = true;
             input = System.in;
         } else if (args.length == 1) {
             input = new FileInputStream(args[0]);
         } else if (args.length > 1) {
-            System.err.println("Usage: java -jar mars-rover-asessment.jar [input-file]");
-            return;
+            throw new IllegalArgumentException("This application accepts only a single argument");
         }
         
-        try {
-            MissionControl missionControl = new MissionControl();
-            MissionEventBus missionEventBus = MissionEventBusFactory.defaultMissionEventBus(missionControl);
+        MissionControl missionControl = new MissionControl();
+        MissionEventBus missionEventBus = MissionEventBusFactory.defaultMissionEventBus(missionControl);
 
-            TextLineStreamController controller = new TextLineStreamController(missionEventBus);
-            controller.process(new Scanner(input), useEmpyLineMarker);
+        TextLineStreamController controller = new TextLineStreamController(missionEventBus);
+        controller.process(new Scanner(input), useEmpyLineMarker);
 
-            MissionControlReporter reporter = new MissionControlReporter(missionControl);
-            reporter.writeReport(output);
-        } catch (NavigationException | IllegalArgumentException ex) {
-            output.println(ex.getMessage());
-        }
+        MissionControlReporter reporter = new MissionControlReporter(missionControl);
+        reporter.writeReport(output);
     }
 }

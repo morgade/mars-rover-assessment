@@ -1,6 +1,7 @@
 package com.morgade.mra.model.navigation;
 
 import com.morgade.mra.model.Plateau;
+import static java.lang.String.format;
 import org.apache.commons.lang3.Validate;
 
 /**
@@ -32,7 +33,8 @@ public class PlateauNavigationSystem implements NavigationSystem2D {
         Validate.notNull(plateau, "plateau parameter must be defined");
         Validate.notNull(startPosition, "startPosition parameter must be defined");
         Validate.notNull(startDirection, "startDirection parameter must be defined");
-        Validate.isTrue( startPosition.isInsideBoundary(plateau.getWidth(), plateau.getHeight()) );
+        Validate.isTrue( startPosition.isInsideBoundary(plateau.getWidth(), plateau.getHeight()),
+                format("Navigation startPosition invalid: %s", startPosition));
         
         this.plateau = plateau;
         this.currentPosition = startPosition;
