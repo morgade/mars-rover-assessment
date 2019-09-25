@@ -15,7 +15,7 @@ import org.apache.commons.lang3.Validate;
  * @author Marcelo Burgos Morgade Cortizo
  */
 public class PlateauEventListener implements MissionEventListener {
-    public static final String EXPECTED_HEADER = "Plateau";
+    public static final String EXPECTED_HEADER_VALUE = "Plateau";
     private static final int EXPECTED_ARGUMENT_COUNT = 2;
     private static final int ARGUMENT_INDEX_WIDTH = 0;
     private static final int ARGUMENT_INDEX_HEIGHT = 1;
@@ -23,7 +23,7 @@ public class PlateauEventListener implements MissionEventListener {
     @Override
     public void handle(MissionEvent event, MissionControl missionControl) {
         // Checks expected header
-        if (!event.getHeader().equals(EXPECTED_HEADER)) {
+        if (!event.getHeader().equals(EXPECTED_HEADER_VALUE)) {
             return;
         }
         

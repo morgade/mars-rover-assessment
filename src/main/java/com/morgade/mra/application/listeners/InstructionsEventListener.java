@@ -3,51 +3,52 @@ package com.morgade.mra.application.listeners;
 import com.morgade.mra.application.MissionEvent;
 import com.morgade.mra.application.MissionEventListener;
 import com.morgade.mra.model.MissionControl;
-import com.morgade.mra.model.Plateau;
 import com.morgade.mra.model.navigation.Direction2D;
+import com.morgade.mra.model.navigation.NavigationInstruction;
 import com.morgade.mra.model.navigation.Position2D;
 import static java.lang.String.format;
 import org.apache.commons.lang3.Validate;
 
 /**
- * Defines a processor for the "Landing" command
- * Header: "RoverId Landing"
- * Arguments: "1 2 N" (x y Direction)
+ * Defines a processor for the "Instructions" command
+ * Header: "RoverId Instructions"
+ * Arguments: "LMMMRMLMMR" (chain of navigation instructions)
  *
  * @author Marcelo Burgos Morgade Cortizo
  */
-public class LandingEventListener implements MissionEventListener {
-    public static final String EXPECTED_HEADER_TEXT = "Landing";
+public class InstructionsEventListener implements MissionEventListener {
+    public static final String EXPECTED_HEADER_VALUE = "Instructions";
     private static final int EXPECTED_HEADER_INDEX = 1;
-    private static final int EXPECTED_ARGUMENT_COUNT = 3;
+    private static final int EXPECTED_HEADER_COUNT = 2;
+    private static final int EXPECTED_ARGUMENT_COUNT = 1;
     private static final int HEADER_INDEX_ID = 0;
-    private static final int ARGUMENT_INDEX_X = 0;
-    private static final int ARGUMENT_INDEX_Y = 1;
-    private static final int ARGUMENT_INDEX_DIRECTION = 2;
+    private static final int ARGUMENT_INDEX_INSTRUCTIONS = 0;
 
     @Override
     public void handle(MissionEvent event, MissionControl missionControl) {
         // Check expected header
         String headers[] = event.getHeaderAsArray();
-        if (EXPECTED_HEADER_INDEX >= headers.length 
-                || !headers[EXPECTED_HEADER_INDEX].equals(EXPECTED_HEADER_TEXT)) {
+        if (EXPECTED_HEADER_COUNT != headers.length 
+                || !headers[EXPECTED_HEADER_INDEX].equals(EXPECTED_HEADER_VALUE)) {
             return;
         }
         
         // Check argument count
         String[] arguments = event.getArgumentAsArray();
         Validate.isTrue(EXPECTED_ARGUMENT_COUNT == arguments.length, 
-            format("Landing event should contain %d arguments", EXPECTED_ARGUMENT_COUNT)
+            format("Instructions event should contain %d arguments", EXPECTED_ARGUMENT_COUNT)
         );
         
         String roverId = headers[HEADER_INDEX_ID];
-        Position2D position = new Position2D(
-            event.getArgumentAsInt(ARGUMENT_INDEX_X),
-            event.getArgumentAsInt(ARGUMENT_INDEX_Y)
-        );
-        Direction2D direction = Direction2D.findByShortName(arguments[ARGUMENT_INDEX_DIRECTION]);
+        String instructions = arguments[ARGUMENT_INDEX_INSTRUCTIONS];
         
-        missionControl.registerLanding(roverId, position, direction);
+        missionControl.processInstructions(
+                roverId,
+                instructions.chars()
+                    .mapToObj(ch -> String.valueOf((char) ch) )
+                    .map( instruction -> NavigationInstruction.fromId(instruction) )
+                    .toArray( l -> new NavigationInstruction[l] )
+        );
     }
 
 }

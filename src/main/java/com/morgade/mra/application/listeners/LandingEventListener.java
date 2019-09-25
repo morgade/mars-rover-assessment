@@ -16,8 +16,9 @@ import org.apache.commons.lang3.Validate;
  * @author Marcelo Burgos Morgade Cortizo
  */
 public class LandingEventListener implements MissionEventListener {
-    public static final String EXPECTED_HEADER_TEXT = "Landing";
+    public static final String EXPECTED_HEADER_VALUE = "Landing";
     private static final int EXPECTED_HEADER_INDEX = 1;
+    private static final int EXPECTED_HEADER_COUNT = 2;
     private static final int EXPECTED_ARGUMENT_COUNT = 3;
     private static final int HEADER_INDEX_ID = 0;
     private static final int ARGUMENT_INDEX_X = 0;
@@ -28,8 +29,8 @@ public class LandingEventListener implements MissionEventListener {
     public void handle(MissionEvent event, MissionControl missionControl) {
         // Check expected header
         String headers[] = event.getHeaderAsArray();
-        if (EXPECTED_HEADER_INDEX >= headers.length 
-                || !headers[EXPECTED_HEADER_INDEX].equals(EXPECTED_HEADER_TEXT)) {
+        if (EXPECTED_HEADER_COUNT != headers.length 
+                || !headers[EXPECTED_HEADER_INDEX].equals(EXPECTED_HEADER_VALUE)) {
             return;
         }
         
