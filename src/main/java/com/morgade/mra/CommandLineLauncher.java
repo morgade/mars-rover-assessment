@@ -51,15 +51,18 @@ public class CommandLineLauncher {
         } else if (args.length == 1) {
             input = new FileInputStream(args[0]);
         } else if (args.length > 1) {
-            throw new IllegalArgumentException("This application accepts only a single argument");
+            throw new IllegalArgumentException("This application doesn't handle more than one argument");
         }
         
+        // Instantiate model and application components
         MissionControl missionControl = new MissionControl();
         MissionEventBus missionEventBus = MissionEventBusFactory.defaultMissionEventBus(missionControl);
 
+        // Setup and run controller for text stream input interface
         TextLineStreamController controller = new TextLineStreamController(missionEventBus);
         controller.process(new Scanner(input), useEmpyLineMarker);
 
+        // Setup and run a print stream output reporter
         MissionControlReporter reporter = new MissionControlReporter(missionControl);
         reporter.writeReport(output);
     }
