@@ -21,13 +21,13 @@ public class RoverTest {
         assertSame( r.getNavigationSystem(), navigationSystem);
     }
     
-    @Test(expected = NullPointerException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void testConstructorInvalid1() {
         NavigationSystem2D navigationSystem = mock(NavigationSystem2D.class);
         Rover r = new Rover(null, navigationSystem);
     }
     
-    @Test(expected = NullPointerException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void testConstructorInvalid2() {
         Rover r = new Rover("Rover1", null);
     }

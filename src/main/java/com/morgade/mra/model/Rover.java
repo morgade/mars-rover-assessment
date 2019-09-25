@@ -1,7 +1,7 @@
 package com.morgade.mra.model;
 
 import com.morgade.mra.model.navigation.NavigationSystem2D;
-import org.apache.commons.lang3.Validate;
+import com.morgade.mra.util.Validate;
 
 /**
  * Models a Rover object capable of navigating in a 2D coordinate space

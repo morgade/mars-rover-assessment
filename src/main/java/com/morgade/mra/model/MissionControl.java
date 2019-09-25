@@ -6,12 +6,12 @@ import com.morgade.mra.model.navigation.PlateauNavigationSystem;
 import com.morgade.mra.model.navigation.Position2D;
 import com.morgade.mra.model.navigation.Direction2D;
 import com.morgade.mra.model.navigation.NavigationException;
+import com.morgade.mra.util.Validate;
 import static java.lang.String.format;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-import org.apache.commons.lang3.Validate;
 
 /**
  * Models a mission control object that manages a set of rovers navigating on a plateau

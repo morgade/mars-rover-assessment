@@ -1,8 +1,8 @@
 package com.morgade.mra.model.navigation;
 
 import com.morgade.mra.model.Plateau;
+import com.morgade.mra.util.Validate;
 import static java.lang.String.format;
-import org.apache.commons.lang3.Validate;
 
 /**
  * Implements a NavigationSystem2D that restrains its position to the boundaries

@@ -1,6 +1,7 @@
 package com.morgade.mra.model;
 
-import org.apache.commons.lang3.Validate;
+import com.morgade.mra.util.Validate;
+
 
 /**
  * Models an immutable plateau value object

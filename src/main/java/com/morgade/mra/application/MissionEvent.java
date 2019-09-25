@@ -1,8 +1,8 @@
 package com.morgade.mra.application;
 
+import com.morgade.mra.util.Validate;
 import java.io.Serializable;
 import static java.lang.String.format;
-import org.apache.commons.lang3.Validate;
 
 /**
  * Model a simple event object that can be published by the application

@@ -4,8 +4,8 @@ import com.morgade.mra.application.MissionEvent;
 import com.morgade.mra.application.MissionEventListener;
 import com.morgade.mra.model.MissionControl;
 import com.morgade.mra.model.Plateau;
+import com.morgade.mra.util.Validate;
 import static java.lang.String.format;
-import org.apache.commons.lang3.Validate;
 
 /**
  * Defines a processor for the "Plateau" command

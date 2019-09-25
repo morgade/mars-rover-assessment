@@ -5,8 +5,8 @@ import com.morgade.mra.application.MissionEventListener;
 import com.morgade.mra.model.MissionControl;
 import com.morgade.mra.model.navigation.Direction2D;
 import com.morgade.mra.model.navigation.Position2D;
+import com.morgade.mra.util.Validate;
 import static java.lang.String.format;
-import org.apache.commons.lang3.Validate;
 
 /**
  * Defines a processor for the "Landing" command
