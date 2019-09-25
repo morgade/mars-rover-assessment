@@ -4,7 +4,8 @@ import static java.lang.String.format;
 import java.util.Arrays;
 
 /**
- * Models the navigation 
+ * Enumeration of navigation instructions
+ * 
  * @author Marcelo Burgos Morgade Cortizo
  */
 public enum NavigationInstruction {

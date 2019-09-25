@@ -13,6 +13,11 @@ import com.morgade.mra.model.MissionControl;
  */
 public class MissionEventBusFactory {
 
+    /**
+     * Create a MissionEventBus with support for "Plateau", "* Landing" and "* Instructions" commands
+     * @param missionControl
+     * @return 
+     */
     public static MissionEventBus defaultMissionEventBus(MissionControl missionControl) {
         SimpleMissionEventBus missionEventBus = new SimpleMissionEventBus(missionControl);
         missionEventBus.registerListener(new PlateauEventListener());
@@ -21,6 +26,11 @@ public class MissionEventBusFactory {
         return missionEventBus;
     }
     
+    /**
+     * Create a MissionEventBus with no registered command listeners
+     * @param missionControl
+     * @return 
+     */
     public static MissionEventBus cleanMissionEventBus(MissionControl missionControl) {
         return new SimpleMissionEventBus(missionControl);
     }

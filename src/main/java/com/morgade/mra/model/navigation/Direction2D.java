@@ -4,7 +4,7 @@ import static java.lang.String.format;
 import java.util.Arrays;
 
 /**
- * Models a simple 2D four directions enumeration in a clockwise order
+ * Models a simple 2D four direction enumeration in a clockwise order
  * @author Marcelo Burgos Morgade Cortizo
  */
 public enum Direction2D {
@@ -42,7 +42,7 @@ public enum Direction2D {
      * @return The new direction after a right turn
      */
     public Direction2D toRight() {
-        // uses the clockwise enumeration order to find the new direction
+        // uses the clockwise enumeration order to define a new direction
         int rightIndex = (ordinal() + 1) % values().length;
         return values()[rightIndex];
     }
@@ -51,7 +51,7 @@ public enum Direction2D {
      * @return The new direction after a left turn
      */
     public Direction2D toLeft() {
-        // uses the clockwise enumeration order to find the new direction
+        // uses the clockwise enumeration order to define a new direction
         int leftIndex = (values().length + ordinal() - 1) % values().length;
         return values()[leftIndex];
     }

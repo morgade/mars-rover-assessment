@@ -8,7 +8,7 @@ import org.junit.Test;
 
 /**
  * Unit tests for class PlateauNavigationSystem
- * @author Marcelo
+ * @author Marcelo Burgos Morgade Cortizo
  */
 public class PlateauNavigationSystemTest {
     private Plateau plateau;

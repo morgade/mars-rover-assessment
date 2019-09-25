@@ -13,8 +13,9 @@ import java.io.PrintStream;
 import java.util.Scanner;
 
 /**
- *
- * @author Marcelo Cortizo
+ * Application command line launcher
+ * 
+ * @author Marcelo Burgos Morgade Cortizo
  */
 public class CommandLineLauncher {
     /**
@@ -64,6 +65,6 @@ public class CommandLineLauncher {
 
         // Setup and run a print stream output reporter
         MissionControlReporter reporter = new MissionControlReporter(missionControl);
-        reporter.writeReport(output);
+        reporter.writeRoverReport(output);
     }
 }

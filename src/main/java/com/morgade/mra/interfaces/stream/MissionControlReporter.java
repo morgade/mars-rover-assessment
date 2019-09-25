@@ -4,7 +4,7 @@ import com.morgade.mra.model.MissionControl;
 import java.io.PrintStream;
 
 /**
- *
+ * A simple reporter class able to output MissionControl data to a PrintStream
  * @author Marcelo Burgos Morgade Cortizo
  */
 public class MissionControlReporter {
@@ -14,7 +14,11 @@ public class MissionControlReporter {
         this.missionControl = missionControl;
     }
     
-    public void writeReport(PrintStream output) {
+    /**
+     * Writes a rover report to a PrintStream
+     * @param output 
+     */
+    public void writeRoverReport(PrintStream output) {
         this.missionControl.getRovers()
             .forEach( 
                 rover -> output.printf("%s:%d %d %s\r\n", 
