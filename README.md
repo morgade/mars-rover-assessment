@@ -12,7 +12,7 @@ Solution for [EventMobi Mars Rover Assessment](https://github.com/EventMobi/mars
 ./build.sh
 ```
 
-**Oprion 2:** Run maven directly
+**Option 2:** Run maven directly
 ```
 mvn clean package
 ```
